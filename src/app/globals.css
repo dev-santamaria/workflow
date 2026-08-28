@@ -1,26 +1,194 @@
 @import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ─── Satoshi Font ──────────────────────────────────────────── */
+@font-face {
+  font-family: 'Satoshi';
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/satoshi/Satoshi-Light.woff') format('woff');
 }
+@font-face {
+  font-family: 'Satoshi';
+  font-style: italic;
+  font-weight: 300;
+  font-display: swap;
+  src: url('/fonts/satoshi/Satoshi-LightItalic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Satoshi';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/satoshi/Satoshi-Regular.woff') format('woff');
+}
+@font-face {
+  font-family: 'Satoshi';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('/fonts/satoshi/Satoshi-Italic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Satoshi';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/satoshi/Satoshi-Medium.woff') format('woff');
+}
+@font-face {
+  font-family: 'Satoshi';
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url('/fonts/satoshi/Satoshi-MediumItalic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Satoshi';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/satoshi/Satoshi-Bold.woff') format('woff');
+}
+@font-face {
+  font-family: 'Satoshi';
+  font-style: italic;
+  font-weight: 700;
+  font-display: swap;
+  src: url('/fonts/satoshi/Satoshi-BoldItalic.woff') format('woff');
+}
+@font-face {
+  font-family: 'Satoshi';
+  font-style: normal;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/fonts/satoshi/Satoshi-Black.woff') format('woff');
+}
+@font-face {
+  font-family: 'Satoshi';
+  font-style: italic;
+  font-weight: 900;
+  font-display: swap;
+  src: url('/fonts/satoshi/Satoshi-BlackItalic.woff') format('woff');
+}
+
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
+  --font-sans: 'Satoshi', system-ui, -apple-system, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', 'Source Code Pro', Menlo, Consolas, monospace;
+  --font-heading: 'Satoshi', system-ui, -apple-system, sans-serif;
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  /* Crown Paints Clean Palette */
+  --color-crown-primary: #32298A;
+  --color-crown-primary-hover: #261e6d;
+  --color-crown-primary-subtle: #f0eff9;
+  --color-crown-gold: #DCB353;
+  --color-crown-gold-hover: #c99f40;
+  --color-crown-gold-subtle: #fbf7ee;
+  --color-crown-slate: #1E293B;
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+:root {
+  /* Clean, crisp enterprise light theme */
+  --background: #ffffff;
+  --foreground: #0f172a;
+  --card: #ffffff;
+  --card-foreground: #0f172a;
+  --popover: #ffffff;
+  --popover-foreground: #0f172a;
+
+  /* Primary #32298A */
+  --primary: #32298A;
+  --primary-foreground: #ffffff;
+
+  /* Secondary #DCB353 */
+  --secondary: #f8fafc;
+  --secondary-foreground: #32298A;
+
+  --muted: #f1f5f9;
+  --muted-foreground: #64748b;
+  --accent: #DCB353;
+  --accent-foreground: #0f172a;
+  --destructive: #ef4444;
+  --border: #e2e8f0;
+  --input: #e2e8f0;
+  --ring: #32298A;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/40;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background-color: #ffffff;
+  }
+  html {
+    font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+    letter-spacing: -0.02em;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* Subtle enterprise grid background */
+.bg-grid-pattern {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(226, 232, 240, 0.45) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(226, 232, 240, 0.45) 1px, transparent 1px);
+}
+
+.bg-dots-pattern {
+  background-image: radial-gradient(rgba(50, 41, 138, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #f8fafc;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
 }
