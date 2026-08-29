@@ -73,23 +73,23 @@ export default function CreateInvoicePage() {
   };
 
   return (
-    <div className="space-y-6 max-w-5xl mx-auto" suppressHydrationWarning>
+    <div className="space-y-3.5 max-w-4xl mx-auto" suppressHydrationWarning>
       {/* Header */}
-      <div className="flex items-center justify-between pb-3 border-b border-slate-200/80">
-        <div className="flex items-center gap-3">
+      <div className="flex items-center justify-between pb-2.5 border-b border-slate-200/80">
+        <div className="flex items-center gap-2.5">
           <Link href="/invoicing">
-            <Button variant="outline" size="sm" className="h-8 w-8 p-0 rounded-lg border-slate-200">
-              <ArrowLeft className="w-4 h-4 text-slate-600" />
+            <Button variant="outline" size="sm" className="h-7.5 w-7.5 p-0 rounded-lg border-slate-200">
+              <ArrowLeft className="w-3.5 h-3.5 text-slate-600" />
             </Button>
           </Link>
           <div>
-            <div className="flex items-center gap-2">
-              <span className="text-xs font-mono font-bold text-slate-900 bg-slate-100 px-2 py-0.5 rounded">
+            <div className="flex items-center gap-1.5">
+              <span className="text-[11px] font-mono font-bold text-slate-900 bg-slate-100 px-1.5 py-0.2 rounded">
                 Accounts Payable Intake
               </span>
-              <span className="text-xs text-slate-400">Step 1 of 2 · eTIMS 3-Way Audit Matching</span>
+              <span className="text-xs text-slate-400">· eTIMS 3-Way Audit Matching</span>
             </div>
-            <h1 className="text-lg sm:text-xl font-bold text-slate-900 tracking-tight pt-0.5">
+            <h1 className="text-sm sm:text-base font-bold text-slate-900 leading-tight">
               Create &amp; Submit Fiscal Tax Invoice
             </h1>
           </div>
@@ -97,28 +97,28 @@ export default function CreateInvoicePage() {
 
         <div className="flex items-center gap-2">
           <Link href="/invoicing">
-            <Button variant="outline" size="sm" className="h-8 text-xs border-slate-200 rounded-lg">
+            <Button variant="outline" size="sm" className="h-7.5 text-xs border-slate-200 rounded-lg">
               Cancel
             </Button>
           </Link>
         </div>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form onSubmit={handleSubmit} className="space-y-3">
         {/* Step 1: Supplier Coordinates & Linked GRN */}
-        <div className="bg-white rounded-xl border border-slate-200/80 p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.02)] space-y-4">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-100">
+        <div className="bg-white rounded-xl border border-slate-200/80 p-3.5 sm:p-4 shadow-2xs space-y-3">
+          <div className="flex items-center justify-between pb-2 border-b border-slate-100">
             <div>
-              <h2 className="text-sm font-semibold text-slate-900">1. Goods Received Note (GRN) Cross-Reference</h2>
-              <p className="text-xs text-slate-400">Attach your invoice to a verified receiving note from Crown Paints plant</p>
+              <h2 className="text-xs sm:text-sm font-semibold text-slate-900">1. Goods Received Note (GRN) Cross-Reference</h2>
+              <p className="text-[11px] text-slate-400">Attach your invoice to a verified receiving note from Crown Paints plant</p>
             </div>
-            <span className="text-xs font-semibold text-emerald-800 bg-emerald-50 px-2.5 py-1 rounded border border-emerald-200/80 flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-600" />
+            <span className="text-[10px] font-bold text-emerald-800 bg-emerald-50 px-2 py-0.5 rounded border border-emerald-200/80 flex items-center gap-1">
+              <ShieldCheck className="w-3 h-3 text-emerald-600" />
               <span>Verified Receiving</span>
             </span>
           </div>
 
-          <div className="p-3 bg-slate-50/70 rounded-lg border border-slate-200/80 text-xs grid grid-cols-1 sm:grid-cols-3 gap-2">
+          <div className="p-2.5 bg-slate-50/70 rounded-lg border border-slate-200/80 text-xs grid grid-cols-1 sm:grid-cols-3 gap-2">
             <div>
               <span className="text-[10px] text-slate-400 block uppercase font-medium">Supplier Legal Name:</span>
               <span className="font-semibold text-slate-900 truncate block">Apex Industrial Polymers Ltd</span>
@@ -133,7 +133,7 @@ export default function CreateInvoicePage() {
             </div>
           </div>
 
-          <div className="space-y-1.5">
+          <div className="space-y-1">
             <Label className="text-xs font-semibold text-slate-900">
               Select Verified Goods Received Note (GRN) *
             </Label>
@@ -146,14 +146,14 @@ export default function CreateInvoicePage() {
         </div>
 
         {/* Step 2: Invoice Numbers & Dates */}
-        <div className="bg-white rounded-xl border border-slate-200/80 p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.02)] space-y-4">
-          <div className="pb-3 border-b border-slate-100">
-            <h2 className="text-sm font-semibold text-slate-900">2. Invoice Identifiers &amp; Accounting Dates</h2>
-            <p className="text-xs text-slate-400">Enter your fiscal invoice details and select dates via calendar</p>
+        <div className="bg-white rounded-xl border border-slate-200/80 p-3.5 sm:p-4 shadow-2xs space-y-3">
+          <div className="pb-2 border-b border-slate-100">
+            <h2 className="text-xs sm:text-sm font-semibold text-slate-900">2. Invoice Identifiers &amp; Accounting Dates</h2>
+            <p className="text-[11px] text-slate-400">Enter fiscal invoice details and select dates via calendar</p>
           </div>
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-            <div className="space-y-1.5">
+          <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+            <div className="space-y-1">
               <Label htmlFor="invNum" className="text-xs font-semibold text-slate-900">
                 Supplier Invoice Number *
               </Label>
@@ -163,11 +163,11 @@ export default function CreateInvoicePage() {
                 value={invoiceNumber}
                 onChange={(e) => setInvoiceNumber(e.target.value)}
                 required
-                className="h-9 text-xs border-slate-200 rounded-lg"
+                className="h-8 text-xs font-mono border-slate-200 rounded-lg bg-slate-50"
               />
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-1">
               <Label htmlFor="etimsCode" className="text-xs font-semibold text-slate-900">
                 KRA eTIMS / EFRIS Control Code *
               </Label>
@@ -177,12 +177,12 @@ export default function CreateInvoicePage() {
                 value={etimsNumber}
                 onChange={(e) => setEtimsNumber(e.target.value)}
                 required
-                className="h-9 text-xs uppercase font-mono border-slate-200 rounded-lg"
+                className="h-8 text-xs uppercase font-mono border-slate-200 rounded-lg bg-slate-50"
               />
             </div>
 
             {/* Custom Date Pickers */}
-            <div className="space-y-1.5">
+            <div className="space-y-1">
               <CustomDatePicker
                 label="Invoice Date *"
                 value={invoiceDate}
@@ -190,74 +190,41 @@ export default function CreateInvoicePage() {
               />
             </div>
 
-            <div className="space-y-1.5">
+            <div className="space-y-1">
               <CustomDatePicker
                 label="Posting / Due Date *"
                 value={postingDate}
                 onChange={(val) => setPostingDate(val)}
               />
             </div>
-
-            <div className="space-y-1.5 sm:col-span-2">
-              <Label className="text-xs font-semibold text-slate-900">
-                Invoice Classification Type *
-              </Label>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                <button
-                  type="button"
-                  onClick={() => setInvoiceType("procurement")}
-                  className={`p-3 rounded-lg border text-xs font-medium text-left transition-colors ${
-                    invoiceType === "procurement"
-                      ? "border-[#32298A] bg-slate-50 text-[#32298A] font-semibold ring-1 ring-[#32298A]"
-                      : "border-slate-200 text-slate-600 hover:bg-slate-50"
-                  }`}
-                >
-                  <p className="font-bold">Procurement Supply (Default)</p>
-                  <p className="text-[10px] text-slate-400 mt-0.5">Raw materials, containers, solvents &amp; packaging</p>
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setInvoiceType("miscellaneous")}
-                  className={`p-3 rounded-lg border text-xs font-medium text-left transition-colors ${
-                    invoiceType === "miscellaneous"
-                      ? "border-[#32298A] bg-slate-50 text-[#32298A] font-semibold ring-1 ring-[#32298A]"
-                      : "border-slate-200 text-slate-600 hover:bg-slate-50"
-                  }`}
-                >
-                  <p className="font-bold">Miscellaneous Service / Freight</p>
-                  <p className="text-[10px] text-slate-400 mt-0.5">Freight transport, warehousing, logistics fees</p>
-                </button>
-              </div>
-            </div>
           </div>
         </div>
 
-        {/* Step 3: Tax / VAT Configuration Engine */}
-        <div className="bg-white rounded-xl border border-slate-200/80 p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.02)] space-y-4">
-          <div className="pb-3 border-b border-slate-100">
-            <h2 className="text-sm font-semibold text-slate-900">3. Tax &amp; Value Added Tax (VAT) Calculation Engine</h2>
-            <p className="text-xs text-slate-400">Configure tax exemptions or standard rates for automatic ledger posting</p>
+        {/* Step 3: Tax Engine */}
+        <div className="bg-white rounded-xl border border-slate-200/80 p-3.5 sm:p-4 shadow-2xs space-y-3">
+          <div className="pb-2 border-b border-slate-100">
+            <h2 className="text-xs sm:text-sm font-semibold text-slate-900">3. Tax &amp; Value Added Tax (VAT) Engine</h2>
+            <p className="text-[11px] text-slate-400">Configure tax rates for automatic ledger posting</p>
           </div>
 
-          <div className="p-4 bg-slate-50/70 rounded-lg border border-slate-200 space-y-3">
+          <div className="p-3 bg-slate-50/70 rounded-lg border border-slate-200 space-y-2.5">
             <div className="flex items-center justify-between">
-              <label className="flex items-center gap-2.5 cursor-pointer">
+              <label className="flex items-center gap-2 cursor-pointer text-xs font-semibold text-slate-800">
                 <input
                   type="checkbox"
                   checked={hasTax}
                   onChange={(e) => setHasTax(e.target.checked)}
-                  className="w-4 h-4 rounded text-[#32298A]"
+                  className="w-3.5 h-3.5 rounded text-[#32298A]"
                 />
-                <span className="text-xs font-semibold text-slate-900">
-                  Items Attract Tax (e.g. VAT 16% / 18%)
-                </span>
+                <span>Subject to Standard VAT / Sales Tax</span>
               </label>
+              <span className="text-[10px] font-mono text-slate-500">16% KRA Standard</span>
             </div>
 
             {hasTax && (
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 border-t border-slate-200/60">
                 <div className="space-y-1">
-                  <Label className="text-[11px] text-slate-500 font-medium">Tax Type Category</Label>
+                  <Label className="text-xs font-medium text-slate-700">Tax Classification</Label>
                   <CustomSelect
                     options={taxTypeOptions}
                     value={taxType}
@@ -265,7 +232,7 @@ export default function CreateInvoicePage() {
                   />
                 </div>
                 <div className="space-y-1">
-                  <Label className="text-[11px] text-slate-500 font-medium">Tax Rate (%)</Label>
+                  <Label className="text-xs font-medium text-slate-700">VAT Rate Percentage</Label>
                   <CustomSelect
                     options={taxRateOptions}
                     value={String(taxRate)}
@@ -275,121 +242,37 @@ export default function CreateInvoicePage() {
               </div>
             )}
 
-            <div className="p-3 bg-white rounded-lg border border-slate-200 text-xs font-mono space-y-1.5">
-              <div className="flex justify-between text-slate-500">
-                <span>Taxable Base Subtotal:</span>
+            <div className="p-2.5 bg-white rounded border border-slate-200 space-y-1 text-xs font-mono">
+              <div className="flex justify-between text-slate-600">
+                <span>Base Taxable Amount:</span>
                 <span>KES {baseAmount.toLocaleString()}</span>
               </div>
-              <div className="flex justify-between text-slate-500">
-                <span>{hasTax ? `${taxRate}% ${taxType}` : "Tax (0%)"}:</span>
+              <div className="flex justify-between text-slate-600">
+                <span>Calculated VAT ({taxRate}%):</span>
                 <span>KES {calculatedTaxAmount.toLocaleString()}</span>
               </div>
-              <div className="flex justify-between font-bold text-slate-900 pt-1.5 border-t border-slate-100 text-sm">
-                <span>Total Payable Invoice Value:</span>
+              <div className="flex justify-between font-bold text-slate-900 pt-1 border-t border-slate-100 text-sm">
+                <span>Gross Payable Total:</span>
                 <span className="text-[#32298A]">KES {calculatedTotal.toLocaleString()}</span>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Step 4: Document Attachment with Active Fresh File Upload */}
-        <div className="bg-white rounded-xl border border-slate-200/80 p-5 sm:p-6 shadow-[0_1px_2px_rgba(0,0,0,0.02)] space-y-4">
-          <div className="pb-3 border-b border-slate-100">
-            <h2 className="text-sm font-semibold text-slate-900">4. Attach Official Fiscal Tax Invoice</h2>
-            <p className="text-xs text-slate-400">Link document from delivery intake step or upload fresh PDF</p>
-          </div>
-
-          <div className="space-y-3">
-            <label className="flex items-start gap-3 p-3 rounded-lg bg-slate-50 border border-slate-200 cursor-pointer">
-              <input
-                type="radio"
-                name="docReuse"
-                checked={docReuseChoice === "vault"}
-                onChange={() => setDocReuseChoice("vault")}
-                className="mt-0.5"
-              />
-              <div className="text-xs">
-                <span className="font-semibold text-slate-900 flex items-center gap-1.5">
-                  <LinkIcon className="w-3.5 h-3.5 text-[#32298A]" />
-                  <span>Link KRA eTIMS Invoice from Delivery Intake Step</span>
-                </span>
-                <p className="text-[11px] text-slate-500 mt-0.5">
-                  File: <strong>KRA_eTIMS_Invoice_91820481.pdf</strong> (Stored in Vault)
-                </p>
-              </div>
-            </label>
-
-            <label className="flex items-start gap-3 p-3 rounded-lg bg-slate-50 border border-slate-200 cursor-pointer">
-              <input
-                type="radio"
-                name="docReuse"
-                checked={docReuseChoice === "fresh"}
-                onChange={() => setDocReuseChoice("fresh")}
-                className="mt-0.5"
-              />
-              <div className="text-xs flex-1">
-                <span className="font-semibold text-slate-900">Upload Fresh Fiscal Tax Invoice PDF</span>
-                <p className="text-[11px] text-slate-500 mt-0.5">
-                  Upload signed electronic fiscal receipt
-                </p>
-              </div>
-            </label>
-
-            {/* Active Dropzone */}
-            {docReuseChoice === "fresh" && (
-              <label className="border-2 border-dashed border-slate-300 hover:border-[#32298A] rounded-lg p-6 flex flex-col items-center justify-center gap-2 cursor-pointer bg-white transition-colors">
-                <Upload className="w-6 h-6 text-[#32298A]" />
-                <span className="text-xs font-semibold text-slate-900">
-                  {uploadedFreshFile ? uploadedFreshFile.name : "Click or Drag to Upload Fiscal Invoice PDF"}
-                </span>
-                <span className="text-[11px] text-slate-400">
-                  {uploadedFreshFile ? `${(uploadedFreshFile.size / 1024).toFixed(1)} KB · Ready to Submit` : "PDF, PNG or JPG (Max 10MB)"}
-                </span>
-                <input
-                  type="file"
-                  accept=".pdf,image/*"
-                  onChange={(e) => e.target.files?.[0] && setUploadedFreshFile(e.target.files[0])}
-                  className="hidden"
-                />
-              </label>
-            )}
-          </div>
-
-          <div className="space-y-1.5 pt-2">
-            <Label htmlFor="comm" className="text-xs font-semibold text-slate-900">
-              Remarks / Comments for Crown Paints Accounts Payable
-            </Label>
-            <Input
-              id="comm"
-              placeholder="Optional remarks regarding delivery receipt or payment booking…"
-              value={comments}
-              onChange={(e) => setComments(e.target.value)}
-              className="h-9 text-xs border-slate-200 rounded-lg"
-            />
-          </div>
-        </div>
-
-        {/* Submit Actions */}
+        {/* Submit */}
         <div className="flex items-center justify-between pt-2">
           <Link href="/invoicing">
-            <Button type="button" variant="outline" className="h-9 border-slate-200 text-slate-700 text-xs font-medium rounded-lg">
-              Discard &amp; Return
+            <Button variant="outline" type="button" className="h-8 text-xs border-slate-200">
+              Cancel
             </Button>
           </Link>
-
           <Button
             type="submit"
             disabled={isSubmitting}
-            className="h-10 px-6 bg-[#32298A] hover:bg-[#271f6f] text-white text-xs font-semibold gap-2 rounded-lg cursor-pointer shadow-xs"
+            className="h-8 bg-[#32298A] hover:bg-[#271f6f] text-white text-xs font-semibold gap-1.5 rounded-lg cursor-pointer"
           >
-            {isSubmitting ? (
-              <span>Submitting to Accounts Department…</span>
-            ) : (
-              <>
-                <Receipt className="w-4 h-4" />
-                <span>Submit Invoice for 3-Way Audit Matching</span>
-              </>
-            )}
+            <Receipt className="w-3.5 h-3.5" />
+            <span>{isSubmitting ? "Submitting to Accounts Payable…" : "Submit Invoice for 3-Way Matching"}</span>
           </Button>
         </div>
       </form>

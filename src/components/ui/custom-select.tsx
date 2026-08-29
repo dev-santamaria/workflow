@@ -46,6 +46,7 @@ export function CustomSelect({
     function handleClickOutside(event: MouseEvent) {
       if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
         setIsOpen(false);
+        setSearch("");
       }
     }
     document.addEventListener("mousedown", handleClickOutside);
@@ -56,9 +57,6 @@ export function CustomSelect({
   useEffect(() => {
     if (isOpen && searchable) {
       setTimeout(() => searchInputRef.current?.focus(), 50);
-    }
-    if (!isOpen) {
-      setSearch("");
     }
   }, [isOpen, searchable]);
 
@@ -72,6 +70,7 @@ export function CustomSelect({
   const handleSelect = (val: string) => {
     onChange(val);
     setIsOpen(false);
+    setSearch("");
   };
 
   return (
@@ -85,7 +84,12 @@ export function CustomSelect({
       <button
         type="button"
         disabled={disabled}
-        onClick={() => !disabled && setIsOpen(!isOpen)}
+        onClick={() => {
+          if (!disabled) {
+            if (isOpen) setSearch("");
+            setIsOpen(!isOpen);
+          }
+        }}
         className={`w-full h-11 px-3.5 rounded-lg border text-left flex items-center justify-between gap-2.5 transition-all bg-white cursor-pointer ${
           isOpen
             ? "border-[#32298A] ring-2 ring-[#32298A]/10 shadow-xs"

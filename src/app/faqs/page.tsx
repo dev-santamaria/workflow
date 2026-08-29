@@ -133,7 +133,7 @@ const faqData: FaqItem[] = [
     category: "Security & Two-Factor Authentication (2FA)",
     question: "Why is Two-Factor Authentication (2FA) mandatory for all portal users?",
     answer:
-      "2FA ensures enterprise-grade protection for commercial bids, pricing secrets, and banking details. By requiring a dynamic 6-digit code from your authenticator app (Google Authenticator, Microsoft Authenticator, or Authy), we eliminate unauthorized access and identity fraud.",
+      "2FA ensures enterprise-grade protection for commercial bids, pricing secrets, and banking details. By requiring a dynamic 6-digit code from your authenticator app, we eliminate unauthorized access and identity fraud.",
     tags: ["2fa", "mfa", "authenticator", "security", "protection"],
   },
   {
@@ -154,14 +154,6 @@ const faqData: FaqItem[] = [
       "Approved buyers can generate Purchase Requisitions (PR), initiate supplier catalog RFQs, compare automated technical and commercial matrices, and route purchase orders through multi-tier internal approval matrices across East Africa.",
     tags: ["buyer", "requisition", "institutional", "approval"],
   },
-  {
-    id: "buy-2",
-    category: "Buyer & Institutional Purchasing",
-    question: "How does Crown Paints evaluate and score supplier performance?",
-    answer:
-      "Suppliers are rated quarterly based on three key performance indicators (KPIs): On-Time Delivery Rate (40%), Quality & Specification Compliance (40%), and Communication & Contract Adherence (20%). High-rated vendors gain priority access to annual framework contracts.",
-    tags: ["kpi", "vendor rating", "performance", "framework"],
-  },
 ];
 
 const categories = [
@@ -177,21 +169,19 @@ const categories = [
 export default function FaqsPage() {
   const [activeCategory, setActiveCategory] = useState("All Categories");
   const [searchQuery, setSearchQuery] = useState("");
-  // Single active item mode — starts null so all are closed by default
   const [activeItemId, setActiveItemId] = useState<string | null>(null);
 
   const handleCategoryChange = (cat: string) => {
     setActiveCategory(cat);
-    setActiveItemId(null); // Auto-close when moving to another category
+    setActiveItemId(null);
   };
 
   const handleSearchChange = (val: string) => {
     setSearchQuery(val);
-    setActiveItemId(null); // Auto-close when searching
+    setActiveItemId(null);
   };
 
   const toggleItem = (id: string) => {
-    // If clicked item is already open, close it; otherwise open it and close any others
     setActiveItemId((prev) => (prev === id ? null : id));
   };
 
@@ -215,39 +205,39 @@ export default function FaqsPage() {
     <div className="flex flex-col min-h-screen bg-white" suppressHydrationWarning>
       <Navbar />
 
-      {/* Hero Header & Search */}
-      <section className="bg-slate-50/70 border-b border-slate-200/80 py-10 lg:py-14" suppressHydrationWarning>
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 text-center space-y-3" suppressHydrationWarning>
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-white border border-slate-200 text-xs font-medium text-slate-700">
-            <HelpCircle className="w-3.5 h-3.5 text-[#32298A]" />
+      {/* Hero Header & Search (Compact) */}
+      <section className="bg-slate-50/70 border-b border-slate-200/80 py-8 sm:py-10" suppressHydrationWarning>
+        <div className="max-w-2xl mx-auto px-4 sm:px-6 text-center space-y-2.5" suppressHydrationWarning>
+          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white border border-slate-200 text-[10px] font-bold text-[#32298A] uppercase tracking-wider">
+            <HelpCircle className="w-3 h-3 text-[#32298A]" />
             <span>Help Center &amp; Documentation</span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-semibold text-slate-900 tracking-tight">
+          <h1 className="text-xl sm:text-2xl font-bold text-slate-900 tracking-tight">
             Frequently Asked Questions
           </h1>
 
-          <p className="text-xs sm:text-sm text-slate-500 leading-relaxed max-w-2xl mx-auto">
-            Find answers to common questions about supplier pre-qualification, multi-currency accounts, tendering procedures, electronic invoicing, and security.
+          <p className="text-xs text-slate-500 leading-relaxed max-w-xl mx-auto">
+            Find answers to common questions about supplier pre-qualification, multi-currency accounts, tendering procedures, and electronic invoicing.
           </p>
 
           {/* Search Box */}
-          <div className="pt-3 max-w-lg mx-auto relative" suppressHydrationWarning>
-            <Search className="absolute left-3.5 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+          <div className="pt-1.5 max-w-md mx-auto relative" suppressHydrationWarning>
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-slate-400" />
             <input
               type="text"
-              placeholder="Search by keyword (e.g. KYC, Tax PIN, Currency, Invoicing, 2FA)…"
+              placeholder="Search by keyword (e.g. KYC, PIN, Currency, Invoicing)…"
               value={searchQuery}
               onChange={(e) => handleSearchChange(e.target.value)}
               suppressHydrationWarning
-              className="w-full pl-10 pr-16 h-10 rounded-xl border border-slate-200 bg-white text-xs font-normal text-slate-800 placeholder:text-slate-400 focus:border-[#32298A] focus:ring-1 focus:ring-[#32298A]/20 outline-none shadow-2xs transition-all"
+              className="w-full pl-8 pr-14 h-8.5 rounded-lg border border-slate-200 bg-white text-xs font-normal text-slate-800 placeholder:text-slate-400 focus:border-[#32298A] outline-none shadow-2xs transition-all"
             />
             {searchQuery && (
               <button
                 type="button"
                 onClick={() => handleSearchChange("")}
                 suppressHydrationWarning
-                className="absolute right-3 top-1/2 -translate-y-1/2 text-[11px] font-medium text-slate-400 hover:text-slate-700 bg-slate-100 px-2 py-0.5 rounded cursor-pointer"
+                className="absolute right-2.5 top-1/2 -translate-y-1/2 text-[10px] font-medium text-slate-400 hover:text-slate-700 bg-slate-100 px-1.5 py-0.2 rounded cursor-pointer"
               >
                 Clear
               </button>
@@ -257,9 +247,9 @@ export default function FaqsPage() {
       </section>
 
       {/* Main FAQ Content */}
-      <main className="max-w-5xl mx-auto px-4 sm:px-6 py-10 flex-1 w-full space-y-6" suppressHydrationWarning>
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 py-6 sm:py-8 flex-1 w-full space-y-4" suppressHydrationWarning>
         {/* Category Filter Tabs */}
-        <div className="flex items-center gap-1.5 overflow-x-auto pb-2 no-scrollbar border-b border-slate-100" suppressHydrationWarning>
+        <div className="flex items-center gap-1 overflow-x-auto pb-1.5 no-scrollbar border-b border-slate-100 text-xs" suppressHydrationWarning>
           {categories.map((cat) => {
             const active = activeCategory === cat;
             return (
@@ -268,9 +258,9 @@ export default function FaqsPage() {
                 type="button"
                 onClick={() => handleCategoryChange(cat)}
                 suppressHydrationWarning
-                className={`px-3 py-1.5 rounded-lg text-xs font-medium whitespace-nowrap transition-colors cursor-pointer ${
+                className={`px-2.5 py-1 rounded-md text-xs font-medium whitespace-nowrap transition-colors cursor-pointer ${
                   active
-                    ? "bg-[#32298A] text-white"
+                    ? "bg-[#32298A] text-white shadow-2xs"
                     : "bg-slate-50 text-slate-600 hover:bg-slate-100 hover:text-slate-900 border border-slate-200/60"
                 }`}
               >
@@ -282,8 +272,8 @@ export default function FaqsPage() {
 
         {/* Results Counter */}
         <div className="flex items-center justify-between text-xs text-slate-500" suppressHydrationWarning>
-          <p className="font-normal">
-            Showing <span className="font-semibold text-slate-800">{filteredFaqs.length}</span> {filteredFaqs.length === 1 ? "question" : "questions"}
+          <p className="text-[11px]">
+            Showing <span className="font-semibold text-slate-800">{filteredFaqs.length}</span> questions
             {searchQuery && (
               <span> for &ldquo;<span className="text-[#32298A] font-medium">{searchQuery}</span>&rdquo;</span>
             )}
@@ -293,16 +283,16 @@ export default function FaqsPage() {
               type="button"
               onClick={() => setActiveItemId(null)}
               suppressHydrationWarning
-              className="text-xs text-[#32298A] hover:underline font-medium cursor-pointer"
+              className="text-[11px] text-[#32298A] hover:underline font-medium cursor-pointer"
             >
               Close all
             </button>
           )}
         </div>
 
-        {/* FAQ Accordion List */}
+        {/* FAQ Accordion List (Compact) */}
         {filteredFaqs.length > 0 ? (
-          <div className="space-y-3" suppressHydrationWarning>
+          <div className="space-y-2" suppressHydrationWarning>
             {filteredFaqs.map((faq) => {
               const isOpen = activeItemId === faq.id;
               return (
@@ -311,7 +301,7 @@ export default function FaqsPage() {
                   suppressHydrationWarning
                   className={`rounded-xl border transition-all duration-150 bg-white ${
                     isOpen
-                      ? "border-[#32298A]/40 shadow-xs"
+                      ? "border-[#32298A]/40 shadow-2xs"
                       : "border-slate-200/80 hover:border-slate-300"
                   }`}
                 >
@@ -319,36 +309,35 @@ export default function FaqsPage() {
                     type="button"
                     onClick={() => toggleItem(faq.id)}
                     suppressHydrationWarning
-                    className="w-full p-4 sm:p-5 text-left flex items-start justify-between gap-4 cursor-pointer"
+                    className="w-full p-3 sm:p-3.5 text-left flex items-start justify-between gap-3 cursor-pointer"
                   >
-                    <div className="space-y-1">
-                      <span className="inline-block text-[11px] font-medium text-slate-500 bg-slate-50 border border-slate-100 px-2 py-0.5 rounded">
+                    <div className="space-y-0.5">
+                      <span className="inline-block text-[10px] font-medium text-slate-500 bg-slate-50 border border-slate-100 px-1.5 py-0.2 rounded">
                         {faq.category}
                       </span>
-                      <h2 className="text-sm sm:text-[15px] font-semibold text-slate-900 leading-snug">
+                      <h2 className="text-xs sm:text-sm font-semibold text-slate-900 leading-snug">
                         {faq.question}
                       </h2>
                     </div>
                     <div
-                      className={`w-6 h-6 rounded-full flex items-center justify-center flex-shrink-0 transition-colors mt-0.5 ${
+                      className={`w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0 transition-colors mt-0.5 ${
                         isOpen ? "bg-[#32298A] text-white" : "bg-slate-100 text-slate-400"
                       }`}
                     >
-                      {isOpen ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+                      {isOpen ? <ChevronUp className="w-3 h-3" /> : <ChevronDown className="w-3 h-3" />}
                     </div>
                   </button>
 
                   {isOpen && (
-                    <div className="px-4 pb-5 sm:px-5 text-xs sm:text-sm text-slate-600 leading-relaxed border-t border-slate-100 pt-3.5 space-y-3">
+                    <div className="px-3 pb-3.5 sm:px-3.5 text-xs text-slate-600 leading-relaxed border-t border-slate-100 pt-2.5 space-y-2">
                       <p>{faq.answer}</p>
 
-                      {/* Tag list */}
-                      <div className="flex flex-wrap items-center gap-1.5 pt-2 border-t border-slate-100/80">
-                        <span className="text-[10px] text-slate-400 font-medium">Related topics:</span>
+                      <div className="flex flex-wrap items-center gap-1 pt-1.5 border-t border-slate-100/80">
+                        <span className="text-[9px] text-slate-400 font-medium">Topics:</span>
                         {faq.tags.map((t) => (
                           <span
                             key={t}
-                            className="text-[10px] bg-slate-50 text-slate-500 border border-slate-200/60 px-2 py-0.5 rounded font-mono"
+                            className="text-[9px] bg-slate-50 text-slate-500 border border-slate-200/60 px-1.5 py-0.2 rounded font-mono"
                           >
                             #{t}
                           </span>
@@ -361,14 +350,14 @@ export default function FaqsPage() {
             })}
           </div>
         ) : (
-          <div className="text-center py-12 max-w-sm mx-auto space-y-2.5" suppressHydrationWarning>
-            <div className="w-10 h-10 rounded-full bg-slate-100 flex items-center justify-center mx-auto text-slate-400">
-              <Search className="w-5 h-5" />
+          <div className="text-center py-8 max-w-sm mx-auto space-y-2" suppressHydrationWarning>
+            <div className="w-8 h-8 rounded-full bg-slate-100 flex items-center justify-center mx-auto text-slate-400">
+              <Search className="w-4 h-4" />
             </div>
-            <h3 className="text-sm font-semibold text-slate-900">
+            <h3 className="text-xs font-semibold text-slate-900">
               No matching questions found
             </h3>
-            <p className="text-xs text-slate-500">
+            <p className="text-[11px] text-slate-500">
               Try searching with different keywords or browse through our category tabs above.
             </p>
             <Button
@@ -379,38 +368,38 @@ export default function FaqsPage() {
                 handleSearchChange("");
                 handleCategoryChange("All Categories");
               }}
-              className="text-xs font-medium border-slate-200 rounded-lg cursor-pointer mt-1"
+              className="text-[11px] font-medium border-slate-200 rounded-lg cursor-pointer h-7 px-3 mt-1"
             >
               Reset Filters
             </Button>
           </div>
         )}
 
-        {/* Still Have Questions Support Banner */}
-        <div className="mt-12 p-6 rounded-xl bg-slate-50/80 border border-slate-200/80 flex flex-col md:flex-row items-center justify-between gap-5" suppressHydrationWarning>
-          <div className="space-y-1 text-center md:text-left">
-            <div className="inline-flex items-center gap-1 text-xs font-semibold text-[#32298A]">
-              <Phone className="w-3.5 h-3.5" />
+        {/* Support Banner (Compact) */}
+        <div className="mt-8 p-4 rounded-xl bg-slate-50/80 border border-slate-200/80 flex flex-col md:flex-row items-center justify-between gap-3" suppressHydrationWarning>
+          <div className="space-y-0.5 text-center md:text-left">
+            <div className="inline-flex items-center gap-1 text-[11px] font-semibold text-[#32298A]">
+              <Phone className="w-3 h-3" />
               <span>Procurement Support Desk</span>
             </div>
-            <h3 className="text-sm sm:text-base font-semibold text-slate-900">
+            <h3 className="text-xs sm:text-sm font-semibold text-slate-900">
               Can&apos;t find what you are looking for?
             </h3>
-            <p className="text-xs text-slate-500 max-w-md">
-              Our call centre and procurement desk are available Monday to Friday 8:00 AM - 5:00 PM to help you.
+            <p className="text-[11px] text-slate-500 max-w-md">
+              Our call centre and procurement desk are available Mon - Fri 8:00 AM - 5:00 PM.
             </p>
           </div>
 
-          <div className="flex items-center gap-2.5 flex-shrink-0">
+          <div className="flex items-center gap-2 flex-shrink-0">
             <Link href="/contact">
-              <Button suppressHydrationWarning className="bg-[#32298A] hover:bg-[#271f6f] text-white font-medium text-xs h-9 px-4 rounded-lg gap-1.5 cursor-pointer">
+              <Button suppressHydrationWarning className="bg-[#32298A] hover:bg-[#271f6f] text-white font-medium text-xs h-7.5 px-3 rounded-lg gap-1 cursor-pointer">
                 <span>Contact Us</span>
-                <ArrowRight className="w-3.5 h-3.5" />
+                <ArrowRight className="w-3 h-3" />
               </Button>
             </Link>
             <a href="tel:0709887000">
-              <Button suppressHydrationWarning variant="outline" className="border-slate-200 bg-white text-slate-700 text-xs font-medium h-9 px-3.5 rounded-lg cursor-pointer">
-                Call: 0709 887 000
+              <Button suppressHydrationWarning variant="outline" className="border-slate-200 bg-white text-slate-700 text-xs font-medium h-7.5 px-3 rounded-lg cursor-pointer">
+                0709 887 000
               </Button>
             </a>
           </div>

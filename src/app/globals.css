@@ -148,19 +148,21 @@
   * {
     @apply border-border outline-ring/40;
   }
+  html {
+    font-size: 15.5px;
+    font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+  }
   body {
     @apply bg-background text-foreground;
     font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
+    font-size: 0.9375rem;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-color: #ffffff;
   }
-  html {
-    font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
-  }
   h1, h2, h3, h4, h5, h6 {
     font-family: 'Satoshi', system-ui, -apple-system, sans-serif;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.015em;
   }
 }
 
